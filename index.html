@@ -23,8 +23,6 @@
 <meta property="og:title" content="charquipayload">
 <meta property="og:description" content="Blue team security — detection engineering, incident analysis, AI security.">
 <meta property="og:type" content="website">
-<!-- El .ico va primero para los navegadores viejos, que se quedan con el
-     primer icono que entienden; el .svg lo prefieren los actuales. -->
 <link rel="icon" href="/favicon.ico" sizes="32x32">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
@@ -155,8 +153,6 @@
     text-decoration:none;
     color:inherit;
     overflow:hidden;
-    /* Las tarjetas de copiar (correo, Discord) son <button>, no <a>: hay que
-       neutralizar los estilos propios del boton para que se vean igual. */
     font:inherit;
     text-align:left;
     width:100%;
@@ -252,8 +248,6 @@
     opacity:1;
   }
 
-  /* Copiar es una accion, no una navegacion: su etiqueta se ve siempre,
-     tambien en movil, donde no existe el hover que revela la flecha. */
   .copy .go{
     transform:translateX(0);
     opacity:1;
@@ -367,8 +361,6 @@
 
 <script>
 (function(){
-  // navigator.clipboard solo existe en contextos seguros (https). GitHub Pages
-  // lo es, pero al abrir el archivo local con file:// no, asi que hay respaldo.
   function copiar(texto){
     if(navigator.clipboard && window.isSecureContext){
       return navigator.clipboard.writeText(texto);
@@ -398,7 +390,6 @@
         etiqueta.textContent = 'copied';
         boton.classList.add('copiado');
       }, function(){
-        // Si el navegador lo bloquea, no se miente: se muestra el fallo.
         etiqueta.textContent = 'press ctrl+c';
       }).then(function(){
         clearTimeout(reloj);
